@@ -4,6 +4,6 @@
 {{- end -}}
 
 {{- if eq .chezmoi.os "linux" -}}
-AppData\*
-Documents\*
+AppData
+Documents
 {{- end -}}
