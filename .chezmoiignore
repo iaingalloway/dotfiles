@@ -1,0 +1,4 @@
+{{- if eq .chezmoi.os "windows" -}}
+.bashrc
+.config/.bash-aliases
+{{- end -}}
