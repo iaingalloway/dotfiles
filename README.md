@@ -5,7 +5,7 @@ My dotfiles, managed by chezmoi.
 On linux:
 
 ```bash
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply iaingalloway
+sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply iaingalloway
 ```
 
 On windows:
