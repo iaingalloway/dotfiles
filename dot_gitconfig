@@ -1,0 +1,122 @@
+[core]
+  editor = nano
+  commentChar = "-"
+  eol = lf
+  autocrlf = input
+
+[user]
+  name = Iain Galloway
+  email = iain.galloway@gmail.com
+  useConfigOnly = true
+
+[github]
+  user = iaingalloway
+
+[includeIf "hasconfig:remote.*.url:**/*dev.azure.com*/menziesdistribution/**"]
+  email = iain.galloway@menziesdistribution.com
+
+[alias]
+  a = add
+
+  ai = add --interactive
+
+  ap = add --patch
+
+  b = branch
+
+  c = commit
+
+  ci = commit
+
+  cm = commit --message
+
+  # Commit all changes in the working tree with the given message
+  cma = !git add --all && git commit --message
+
+  # Commit all changes in the working tree with the given message and push
+  cmap = "!f() { git add --all && git commit -m \"$1\" && git push; }; f"
+
+  co = !echo Use git switch or git restore && exit 1
+
+  d = difftool
+
+  f = fetch
+
+  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+
+  p = push
+
+  pf = push --force-with-lease
+
+  pushf = push --force-with-lease
+
+  r = rebase
+
+  s = status
+
+  sh = show
+
+  sw = switch
+
+  swb = switch -
+
+  swc = switch -c
+
+  # Create a tag with an empty message
+  t = tag -a --message=""
+
+  unstage = reset HEAD
+
+  # Append the currently staged files to the latest commit
+  append = commit --amend --reuse-message=HEAD
+
+  # Append all changes in the working tree to the latest commit
+  append-all = !git add --all && git append
+
+  # Append the currently staged files to the latest commit and force push
+  appendf = !git append && git pushf
+
+  # Append all changes in the working tree to the latest commit and force push
+  appendf-all = !git append-all && git pushf
+
+  # Get the name of the current branch
+  current-branch = !git rev-parse --verify HEAD >/dev/null 2>&1 && git rev-parse --abbrev-ref HEAD || (echo 'No commits' && exit 1)
+
+  # Discard all changes in the working tree
+  discard = !git reset HEAD . -- && git restore -- . && git clean -fd .
+
+  # Perform a git command in each subdirectory of the current directory
+  foreach-subdirectory = !ls -d */ | xargs -I{} git -C {}
+
+  # Show the status of each subdirectory of the current directory
+  foreach-subdirectory-status = foreach-subdirectory short-status
+
+  # Get the name of main branch
+  main = !git remote show origin | awk '/HEAD branch/ {print $3}'
+
+  # Get the path to the root of the repository
+  pwd = rev-parse --show-toplevel
+
+  # Show a summary of status of the repository
+  short-status = !echo && git pwd && git current-branch || true && git status --porcelain
+
+  # Rebase on top of origin/main
+  up = !git fetch && git rebase origin/$(git main)
+
+  # Update timestamps of unpushed commits to the current time
+  update-timestamps = !git rebase -x 'git commit --amend --no-edit --date=now' origin/$(git current-branch)
+
+[fetch]
+  prune = true
+  pruneTags = true
+[init]
+  defaultBranch = main
+[pull]
+  rebase = true
+[push]
+  autoSetupRemote = true
+  followTags = true
+[rebase]
+  abbreviateCommands = true
+  autoStash = true
+  autoSquash = true
