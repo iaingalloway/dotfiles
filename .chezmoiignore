@@ -2,3 +2,8 @@
 .bashrc
 .config/.bash-aliases
 {{- end -}}
+
+{{- if eq .chezmoi.os "linux" -}}
+AppData\*
+Documents\*
+{{- end -}}
