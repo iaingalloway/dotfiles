@@ -11,5 +11,6 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply iaingalloway
 On windows:
 
 ```powershell
-winget install -e --id twpayne.chezmoi && chezmoi init --apply iaingalloway
+winget install -e --id twpayne.chezmoi
+chezmoi init --apply iaingalloway
 ```
