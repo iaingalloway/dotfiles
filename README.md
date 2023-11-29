@@ -1,6 +1,6 @@
 # My dotfiles
 
-My dotfiles, managed by [chezmoi](https://www.chezmoi.io/).
+My dotfiles, managed with [chezmoi](https://www.chezmoi.io/).
 
 On linux:
 
