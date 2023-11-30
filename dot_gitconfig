@@ -9,11 +9,14 @@
   email = iain.galloway@gmail.com
   useConfigOnly = true
 
-[github]
-  user = iaingalloway
+[includeIf "hasconfig:remote.*.url:*dev.azure.com*/menziesdistribution/**"]
+  path = ~/.config/git/menzies
 
 [includeIf "hasconfig:remote.*.url:**/*dev.azure.com*/menziesdistribution/**"]
-  email = iain.galloway@menziesdistribution.com
+  path = ~/.config/git/menzies
+
+[github]
+  user = iaingalloway
 
 [alias]
   a = add
