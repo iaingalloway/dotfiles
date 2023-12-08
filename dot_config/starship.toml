@@ -58,9 +58,9 @@ format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 added_style = 'bold blue'
 
 [git_state]
-format = '[\($state($progress_current of $progress_total)\)]($style) '
+format = '[ $state($progress_current of $progress_total)]($style)'
 style = 'bg:#A8006A'
-cherry_pick = '[🍒 PICKING](bg:#A8006A fg:#FF8B6B)'
+cherry_pick = '🍒'
 
 [git_status]
 format = '[( $up_to_date$conflicted$untracked$modified$renamed$deleted$stashed$ahead_behind$staged) ]($style)'
