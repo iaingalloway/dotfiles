@@ -100,6 +100,9 @@
   # Get the path to the root of the repository
   pwd = rev-parse --show-toplevel
 
+  # Remove all hooks
+  remove-hooks = !git config --local --unset-all core.hooksPath
+
   # Show a summary of status of the repository
   short-status = !echo && git pwd && git current-branch || true && git status --porcelain
 
