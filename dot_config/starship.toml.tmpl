@@ -1,0 +1,101 @@
+# ~/.config/starship.toml
+
+'$schema' = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+format = """\
+[](fg:{{ .colours.accentFourBright }})\
+$os\
+$hostname\
+[](bg:{{ .colours.accentOne }} fg:{{ .colours.accentFourBright }})\
+$directory\
+[](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentOne }})\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+[](bg:{{ .colours.accentThree }} fg:{{ .colours.accentTwo }})\
+$kubernetes\
+[](fg:{{ .colours.accentThree }})
+$jobs\
+$sudo\
+$character"""
+
+[character]
+success_symbol = '[]({{ .colours.bodySuccess }})'
+error_symbol = '[]({{ .colours.bodyError }})'
+
+[directory]
+format = '[ $path ]($style)'
+home_symbol = ''
+style = 'bg:{{ .colours.accentOne }} fg:{{ .colours.accentOneForeground }}'
+truncate_to_repo = true
+truncation_symbol = '…/'
+
+[git_branch]
+format = '[ $branch]($style)'
+symbol = ''
+style = 'bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoForeground }}'
+truncation_length = 20
+truncation_symbol = '…/'
+
+[git_commit]
+format = '[ $tag]($style)'
+tag_symbol = ''
+style = 'bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoForeground }}'
+tag_disabled = false
+commit_hash_length = 4
+
+[git_metrics]
+format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+added_style = 'bold blue'
+
+[git_state]
+format = '[ $state($progress_current of $progress_total)]($style)'
+style = 'bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoForeground }}'
+cherry_pick = '🍒'
+
+[git_status]
+format = '[( $up_to_date$conflicted$untracked$modified$renamed$deleted$stashed$ahead_behind$staged) ]($style)'
+style = 'bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoForeground }}'
+conflicted = '[🏳](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoError }})'
+up_to_date = '[](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoSuccess }})'
+untracked = '[](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoError }})'
+ahead = '[${count}](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoForeground }})'
+diverged = '[${ahead_count}${behind_count}](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoForeground }})'
+behind = '[${count}](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoForeground }})'
+stashed = '[](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoForeground }})'
+modified = '[](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoError }})'
+staged = '[+$count](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoForeground }})'
+renamed = '[](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoError }})'
+deleted = '[](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoError }})'
+
+[hostname]
+format = '[$hostname ]($style)'
+style = 'bg:{{ .colours.accentFourBright }}'
+
+[jobs]
+format = '[$symbol]($style)'
+symbol = '|'
+style = '{{ .colours.accentThree }}'
+
+[kubernetes]
+disabled = false
+format = '[ $symbol$context( \($namespace\)) ]($style)'
+symbol = '⎈'
+style = 'bg:{{ .colours.accentThree }} fg:{{ .colours.accentThreeForeground }}'
+
+[kubernetes.context_aliases]
+'gke.*_(?P<var_cluster>[\w-]+)' = 'gke-$var_cluster'
+'kind-(?P<var_cluster>[\w-]+)' = '$var_cluster'
+
+[os]
+disabled = false
+format = '[$symbol ]($style)'
+style = 'bg:{{ .colours.accentFourBright }} fg:{{ .colours.accentFourForeground }}'
+
+[os.symbols]
+Ubuntu = ''
+Windows  = ''

@@ -1,0 +1,21 @@
+[colours]
+bodyError = "#A8006A"
+bodySuccess = "#73A800"
+
+accentOne = "#00A8A5"
+accentOneBright = "#00FFFF"
+accentOneForeground = "white"
+
+accentTwo = "#A8006A"
+accentTwoBright = "#FF0099"
+accentTwoForeground = "white"
+accentTwoError = "#FF8B6B"
+accentTwoSuccess = "#C4FF78"
+
+accentThree = "#73A800"
+accentThreeBright = "#CCFF00"
+accentThreeForeground = "white"
+
+accentFour = "#0021A8"
+accentFourBright = "#0033FF"
+accentFourForeground = "white"
