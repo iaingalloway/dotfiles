@@ -8,6 +8,8 @@ alias gs='git status'
 __git_complete gs _git_status
 alias ga='git add'
 __git_complete ga _git_add
+alias gl='git l'
+__git_complete gl _git_log
 
 # kubectl
 alias k=kubectl
