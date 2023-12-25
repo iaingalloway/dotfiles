@@ -47,7 +47,7 @@
 
   l = lf -n 20
 
-  lf = "!git log --graph --pretty=format:'%C({{ .colours.accentOne }})%h%C({{ .colours.accentTwoBright }})%d%Creset %s %C({{ .colours.accentThree }})%an %cr%Creset'"
+  lf = "!git log --graph --pretty=format:'%C({{ .colours.accentOne }})%h%Creset %s %C({{ .colours.accentTwoBright }})%(decorate:prefix=,suffix= ,tag=,separator= ,pointer=>)%C({{ .colours.accentThree }})%an %cr%Creset'"
 
   p = push
 
