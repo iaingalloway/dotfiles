@@ -1,2 +1,8 @@
 [data]
   name = "Iain Galloway"
+
+{{- if eq .chezmoi.os "windows" }}
+
+[cd]
+  command = "pwsh"
+{{- end }}
