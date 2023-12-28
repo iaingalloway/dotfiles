@@ -23,6 +23,7 @@ Import-Module posh-git
 
 function gs { git status $args }
 function ga { git add $args }
+function gl { git l $args }
 
 # kubectl
 $KubectlCompletionScript = (kubectl completion powershell)
