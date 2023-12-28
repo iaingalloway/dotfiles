@@ -1,6 +1,14 @@
 Set-PSReadLineOption -EditMode Emacs
 Invoke-Expression (&starship init powershell)
 
+# chezmoi
+function Edit-Dotfiles {
+  code (chezmoi source-path)
+}
+
+New-Alias dotfiles Edit-Dotfiles
+New-Alias df Edit-Dotfiles
+
 # dotnet
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
   param($commandName, $wordToComplete, $cursorPosition)
