@@ -87,9 +87,13 @@ format = '[ $symbol$context( \($namespace\)) ]($style)'
 symbol = '⎈'
 style = 'bg:{{ .colours.accentThree }} fg:{{ .colours.accentThreeForeground }}'
 
-[kubernetes.context_aliases]
-'gke.*_(?P<var_cluster>[\w-]+)' = 'gke-$var_cluster'
-'kind-(?P<var_cluster>[\w-]+)' = '$var_cluster'
+[[kubernetes.contexts]]
+context_pattern = 'gke.*_(?P<var_cluster>[\w-]+)'
+context_alias = 'gke-$var_cluster'
+
+[[kubernetes.contexts]]
+context_pattern = 'kind-(?P<var_cluster>[\w-]+)'
+context_alias = '$var_cluster'
 
 [os]
 disabled = false
