@@ -4,6 +4,12 @@
 alias dotfiles='code $(chezmoi source-path)'
 alias df='dotfiles'
 
+# docker
+alias d=docker
+complete -F _docker d
+alias dr='docker run --rm -it'
+alias de='docker exec -it'
+
 # git
 source /usr/share/bash-completion/completions/git
 alias g=git
