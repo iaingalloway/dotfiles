@@ -4,18 +4,18 @@ bodySuccess = "#73A800"
 
 accentOne = "#00A8A5"
 accentOneBright = "#00FFFF"
-accentOneForeground = "white"
+accentOneForeground = "#E0E0E0"
 
 accentTwo = "#A8006A"
 accentTwoBright = "#FF0099"
-accentTwoForeground = "white"
+accentTwoForeground = "#E0E0E0"
 accentTwoError = "#FF8B6B"
 accentTwoSuccess = "#C4FF78"
 
 accentThree = "#73A800"
 accentThreeBright = "#CCFF00"
-accentThreeForeground = "white"
+accentThreeForeground = "#E0E0E0"
 
 accentFour = "#0021A8"
 accentFourBright = "#0033FF"
-accentFourForeground = "white"
+accentFourForeground = "#E0E0E0"
