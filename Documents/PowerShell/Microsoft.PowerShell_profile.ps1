@@ -8,6 +8,9 @@ function Edit-Dotfiles {
 
 New-Alias dotfiles Edit-Dotfiles
 New-Alias df Edit-Dotfiles
+function dfu {
+  chezmoi update --apply
+}
 
 # dotnet
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {

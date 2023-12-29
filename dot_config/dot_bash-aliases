@@ -3,6 +3,7 @@
 # chezmoi
 alias dotfiles='code $(chezmoi source-path)'
 alias df='dotfiles'
+alias dfu='chezmoi update --apply'
 
 # docker
 alias d=docker
