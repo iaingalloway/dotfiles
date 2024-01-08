@@ -54,8 +54,7 @@
       "font": {
         "face": "CaskaydiaCove Nerd Font Mono",
         "size": 13.0,
-        "features":
-        {
+        "features": {
           "calt": 0
         }
       },
