@@ -122,7 +122,7 @@
   up = !git current-remote-set-head && git rebase $(git current-remote)/HEAD
 
   # Update timestamps of unpushed commits to the current time
-  update-timestamps = !git rebase -x 'git commit --amend --no-edit --date=now' origin/$(git current-branch)
+  update-timestamps = !git rebase -x 'git commit --amend --no-edit --date=now' $(git current-remote)/$(git current-branch)
 
 [fetch]
   prune = true
