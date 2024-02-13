@@ -47,7 +47,11 @@
 
   l = lf -n 20
 
+  lc = l-concise -n 40
+
   lf = "!git log --graph --pretty=format:'%C({{ .colours.accentOne }})%h%Creset %s %C({{ .colours.accentTwoBright }})%(decorate:prefix=,suffix= ,tag=,separator= ,pointer=>)%C({{ .colours.accentThree }})%an %cr%Creset'"
+
+  l-concise = "!git log --graph --pretty=format:'%C(#00A8A5)%h%Creset %<(80,trunc)%s'"
 
   p = push
 
