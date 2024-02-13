@@ -91,6 +91,12 @@
   # Get the name of the current branch
   current-branch = !git rev-parse --verify HEAD >/dev/null 2>&1 && git rev-parse --abbrev-ref HEAD || (echo 'No commits' && exit 1)
 
+  # Get the name of the current remote
+  current-remote = !git config --get branch.$(git current-branch).remote || (echo 'No remote' && exit 1)
+
+  # Set the head of the current remote
+  current-remote-set-head = !remote=$(git current-remote) && git fetch $remote && git remote set-head $remote -a || (echo 'No remote' && exit 1)
+
   # Discard all changes in the working tree
   discard = !git reset HEAD . -- && git restore -- . && git clean -fd .
 
@@ -101,7 +107,7 @@
   foreach-subdirectory-status = foreach-subdirectory short-status
 
   # Get the name of main branch
-  main = !git remote show origin | awk '/HEAD branch/ {print $3}'
+  main = !git current-remote-set-head >/dev/null 2>&1 && git for-each-ref --format='%(refname:lstrip=3)' $(git symbolic-ref refs/remotes/$(git current-remote)/HEAD) || (echo 'No remote' && exit 1)
 
   # Get the path to the root of the repository
   pwd = rev-parse --show-toplevel
@@ -113,7 +119,7 @@
   short-status = !echo && git pwd && git current-branch || true && git status --porcelain
 
   # Rebase on top of origin/main
-  up = !git fetch && git rebase origin/$(git main)
+  up = !git current-remote-set-head && git rebase $(git current-remote)/HEAD
 
   # Update timestamps of unpushed commits to the current time
   update-timestamps = !git rebase -x 'git commit --amend --no-edit --date=now' origin/$(git current-branch)
