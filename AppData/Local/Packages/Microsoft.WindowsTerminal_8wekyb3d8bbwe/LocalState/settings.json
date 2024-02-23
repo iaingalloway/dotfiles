@@ -7,8 +7,20 @@
       "keys": "ctrl+shift+f"
     },
     {
+      "command": {
+        "action": "splitPane",
+        "split": "auto",
+        "splitMode": "duplicate"
+      },
+      "keys": "alt+shift+d"
+    },
+    {
       "command": "paste",
       "keys": "ctrl+v"
+    },
+    {
+      "command": "duplicateTab",
+      "keys": "ctrl+t"
     },
     {
       "command": {
@@ -18,24 +30,14 @@
       "keys": "ctrl+c"
     },
     {
-      "command": {
-        "action": "splitPane",
-        "split": "auto",
-        "splitMode": "duplicate"
-      },
-      "keys": "alt+shift+d"
-    },
-    {
       "command": "closePane",
       "keys": "ctrl+f4"
     },
     {
-      "command": "duplicateTab",
-      "keys": "ctrl+t"
-    },
-    {
-      "command": "splitPane",
-      "keys": "shift+pageup"
+      "command": {
+        "action": "splitPane"
+      },
+      "keys": "shift+pgup"
     },
     {
       "command": {
@@ -51,13 +53,15 @@
   "profiles": {
     "defaults": {
       "bellStyle": "window",
+      "colorScheme": "Tango Light",
       "font": {
         "face": "CaskaydiaCove Nerd Font Mono",
-        "size": 13.0,
         "features": {
           "calt": 0
-        }
+        },
+        "size": 13.0
       },
+      "opacity": 95,
       "useAtlasEngine": true
     },
     "list": [
@@ -321,5 +325,6 @@
       "yellow": "#808000"
     }
   ],
+  "theme": "system",
   "themes": []
 }
