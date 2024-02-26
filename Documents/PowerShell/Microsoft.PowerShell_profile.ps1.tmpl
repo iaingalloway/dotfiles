@@ -1,13 +1,14 @@
 Set-PSReadLineOption -EditMode Emacs
 
 Set-PSReadLineOption -Colors @{
-  Command            = 'Black'
+  Command            = '{{ .colours.accentOne }}'
   Number             = 'DarkGray'
   Member             = 'DarkGray'
   Operator           = 'DarkGray'
   Type               = 'DarkGray'
-  Variable           = 'DarkGreen'
-  Parameter          = 'DarkGreen'
+  Variable           = '{{ .colours.accentTwo }}'
+  Parameter          = '{{ .colours.accentTwo }}'
+  String            = '{{ .colours.accentThree }}'
   ContinuationPrompt = 'DarkGray'
   Default            = 'DarkGray'
 }
