@@ -4,7 +4,7 @@
 alias dotfiles='code $(chezmoi source-path)'
 alias df='dotfiles'
 alias dfu='chezmoi update --apply'
-alias dfuu='chezmoi update --apply && pwsh.exe -Command "chezmoi update --apply"'
+alias dfx='chezmoi update --apply && pwsh.exe -Command "chezmoi update --apply"'
 
 # docker
 alias d=docker
