@@ -1,0 +1,49 @@
+[colourSchemes.venusFort]
+name = "Venus Fort"
+
+success = "green"
+error = "red"
+
+accentOne = "cyan"
+accentOneBright = "brightCyan"
+accentOneForeground = "brightWhite"
+
+accentTwo = "red"
+accentTwoBright = "brightRed"
+accentTwoForeground = "brightWhite"
+accentTwoSuccess = "greenOnRed"
+accentTwoError = "redOnRed"
+
+accentThree = "green"
+accentThreeBright = "green"
+accentThreeForeground = "brightWhite"
+
+accentFour = "brightBlue"
+accentFourBright = "brightBlue"
+accentFourForeground = "brightWhite"
+
+black = "#000000"
+brightBlack = "#555753"
+blue = "#0021A8"
+brightBlue = "#0033FF"
+cyan = "#00A8A5"
+brightCyan = "#00D6D3"
+green = "#73A800"
+brightGreen = "#CCFF00"
+purple = "#75507B"
+brightPurple = "#AD7FA8"
+red = "#A8006A"
+brightRed = "#FF0099"
+white = "#D3D7CF"
+brightWhite = "#E0E0E0"
+yellow = "#C4A000"
+brightYellow = "#FCE94F"
+
+background = "#FFFFFF"
+foreground = "#555753"
+
+cursorColor = "#000000"
+selectionBackground = "#FFFFFF"
+
+greenOnRed = "#C4FF78"
+redOnRed = "#FF8B6B"

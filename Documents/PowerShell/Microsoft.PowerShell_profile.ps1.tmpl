@@ -1,14 +1,20 @@
+{{- $activeSchemeName := .activeScheme.name -}}
+{{- $activeScheme := index .colourSchemes $activeSchemeName -}}
+{{- $command := index $activeScheme $activeScheme.accentOneBright -}}
+{{- $variable := index $activeScheme $activeScheme.accentTwoBright -}}
+{{- $string := index $activeScheme $activeScheme.accentThreeBright -}}
+
 Set-PSReadLineOption -EditMode Emacs
 
 Set-PSReadLineOption -Colors @{
-  Command            = '{{ .colours.accentOne }}'
+  Command            = '{{ $command }}'
   Number             = 'DarkGray'
   Member             = 'DarkGray'
   Operator           = 'DarkGray'
   Type               = 'DarkGray'
-  Variable           = '{{ .colours.accentTwo }}'
-  Parameter          = '{{ .colours.accentTwo }}'
-  String            = '{{ .colours.accentThree }}'
+  Variable           = '{{ $variable }}'
+  Parameter          = '{{ $variable }}'
+  String             = '{{ $string }}'
   ContinuationPrompt = 'DarkGray'
   Default            = 'DarkGray'
 }

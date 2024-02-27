@@ -1,3 +1,9 @@
+{{- $activeSchemeName := .activeScheme.name -}}
+{{- $activeScheme := index .colourSchemes $activeSchemeName -}}
+{{- $hash := index $activeScheme $activeScheme.accentOneBright -}}
+{{- $decorate := index $activeScheme $activeScheme.accentTwoBright -}}
+{{- $author := index $activeScheme $activeScheme.accentThreeBright -}}
+
 [core]
   editor = nano
   commentChar = "-"
@@ -49,7 +55,7 @@
 
   lc = l-concise -n 40
 
-  lf = "!git log --graph --pretty=format:'%C({{ .colours.accentOne }})%h%Creset %s %C({{ .colours.accentTwoBright }})%(decorate:prefix=,suffix= ,tag=,separator= ,pointer=>)%C({{ .colours.accentThree }})%an %cr%Creset'"
+  lf = "!git log --graph --pretty=format:'%C({{ $hash }})%h%Creset %s %C({{ $decorate }})%(decorate:prefix=,suffix= ,tag=,separator= ,pointer=>)%C({{ $author }})%an %cr%Creset'"
 
   l-concise = "!git log --graph --pretty=format:'%C(#00A8A5)%h%Creset %<(80,trunc)%s'"
 

@@ -1,3 +1,18 @@
+{{- $activeSchemeName := .activeScheme.name -}}
+{{- $activeScheme := index .colourSchemes $activeSchemeName -}}
+{{- $directoryBackground := index $activeScheme $activeScheme.accentOne -}}
+{{- $directoryForeground := index $activeScheme $activeScheme.accentOneForeground -}}
+{{- $gitBackground := index $activeScheme $activeScheme.accentTwo -}}
+{{- $gitForeground := index $activeScheme $activeScheme.accentTwoForeground -}}
+{{- $gitError := index $activeScheme $activeScheme.accentTwoError -}}
+{{- $gitSuccess := index $activeScheme $activeScheme.accentTwoSuccess -}}
+{{- $kubernetesBackground := index $activeScheme $activeScheme.accentThree -}}
+{{- $kubernetesForeground := index $activeScheme $activeScheme.accentThreeForeground -}}
+{{- $hostBackground := index $activeScheme $activeScheme.accentFour -}}
+{{- $hostForeground := index $activeScheme $activeScheme.accentFourForeground -}}
+{{- $success := index $activeScheme $activeScheme.success -}}
+{{- $error := index $activeScheme $activeScheme.error -}}
+
 # ~/.config/starship.toml
 
 '$schema' = 'https://starship.rs/config-schema.json'
@@ -5,46 +20,46 @@
 add_newline = true
 
 format = """\
-[](fg:{{ .colours.accentFourBright }})\
+[](fg:{{ $hostBackground }})\
 $os\
 $hostname\
-[](bg:{{ .colours.accentOne }} fg:{{ .colours.accentFourBright }})\
+[](bg:{{ $directoryBackground }} fg:{{ $hostBackground }})\
 $directory\
-[](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentOne }})\
+[](bg:{{ $gitBackground }} fg:{{ $directoryBackground }})\
 $git_branch\
 $git_commit\
 $git_state\
 $git_metrics\
 $git_status\
-[](bg:{{ .colours.accentThree }} fg:{{ .colours.accentTwo }})\
+[](bg:{{ $kubernetesBackground }} fg:{{ $gitBackground }})\
 $kubernetes\
-[](fg:{{ .colours.accentThree }})
+[](fg:{{ $kubernetesBackground }})
 $jobs\
 $sudo\
 $character"""
 
 [character]
-success_symbol = '[]({{ .colours.bodySuccess }})'
-error_symbol = '[]({{ .colours.bodyError }})'
+success_symbol = '[]({{ $success }})'
+error_symbol = '[]({{ $error }})'
 
 [directory]
 format = '[ $path ]($style)'
 home_symbol = ''
-style = 'bg:{{ .colours.accentOne }} fg:{{ .colours.accentOneForeground }}'
+style = 'bg:{{ $directoryBackground }} fg:{{ $directoryForeground }}'
 truncate_to_repo = true
 truncation_symbol = '…/'
 
 [git_branch]
 format = '[ $branch]($style)'
 symbol = ''
-style = 'bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoForeground }}'
+style = 'bg:{{ $gitBackground }} fg:{{ $gitForeground }}'
 truncation_length = 20
 truncation_symbol = '…/'
 
 [git_commit]
 format = '[ $tag]($style)'
 tag_symbol = ''
-style = 'bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoForeground }}'
+style = 'bg:{{ $gitBackground }} fg:{{ $gitForeground }}'
 tag_disabled = false
 commit_hash_length = 4
 
@@ -54,38 +69,38 @@ added_style = 'bold blue'
 
 [git_state]
 format = '[ $state($progress_current of $progress_total)]($style)'
-style = 'bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoForeground }}'
+style = 'bg:{{ $gitBackground }} fg:{{ $gitForeground }}'
 cherry_pick = '🍒'
 
 [git_status]
 format = '[( $up_to_date$conflicted$untracked$modified$renamed$deleted$stashed$ahead_behind$staged) ]($style)'
-style = 'bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoForeground }}'
-conflicted = '[🏳](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoError }})'
-up_to_date = '[](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoSuccess }})'
-untracked = '[](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoError }})'
-ahead = '[${count}](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoForeground }})'
-diverged = '[${ahead_count}${behind_count}](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoForeground }})'
-behind = '[${count}](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoForeground }})'
-stashed = '[](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoForeground }})'
-modified = '[](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoError }})'
-staged = '[+$count](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoForeground }})'
-renamed = '[](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoError }})'
-deleted = '[](bg:{{ .colours.accentTwo }} fg:{{ .colours.accentTwoError }})'
+style = 'bg:{{ $gitBackground }} fg:{{ $gitForeground }}'
+conflicted = '[🏳](bg:{{ $gitBackground }} fg:{{ $gitError }})'
+up_to_date = '[](bg:{{ $gitBackground }} fg:{{ $gitSuccess }})'
+untracked = '[](bg:{{ $gitBackground }} fg:{{ $gitError }})'
+ahead = '[${count}](bg:{{ $gitBackground }} fg:{{ $gitForeground }})'
+diverged = '[${ahead_count}${behind_count}](bg:{{ $gitBackground }} fg:{{ $gitForeground }})'
+behind = '[${count}](bg:{{ $gitBackground }} fg:{{ $gitForeground }})'
+stashed = '[](bg:{{ $gitBackground }} fg:{{ $gitForeground }})'
+modified = '[](bg:{{ $gitBackground }} fg:{{ $gitError }})'
+staged = '[+$count](bg:{{ $gitBackground }} fg:{{ $gitForeground }})'
+renamed = '[](bg:{{ $gitBackground }} fg:{{ $gitError }})'
+deleted = '[](bg:{{ $gitBackground }} fg:{{ $gitError }})'
 
 [hostname]
 format = '[$hostname ]($style)'
-style = 'bg:{{ .colours.accentFourBright }}'
+style = 'bg:{{ $hostBackground }} fg:{{ $hostForeground }}'
 
 [jobs]
 format = '[$symbol]($style)'
 symbol = '|'
-style = '{{ .colours.accentThree }}'
+style = '{{ $kubernetesBackground }}'
 
 [kubernetes]
 disabled = false
 format = '[ $symbol $context( \($namespace\)) ]($style)'
 symbol = '⎈'
-style = 'bg:{{ .colours.accentThree }} fg:{{ .colours.accentThreeForeground }}'
+style = 'bg:{{ $kubernetesBackground }} fg:{{ $kubernetesForeground }}'
 
 [[kubernetes.contexts]]
 context_pattern = 'gke.*_(?P<var_cluster>[\w-]+)'
@@ -98,7 +113,7 @@ context_alias = '$var_cluster'
 [os]
 disabled = false
 format = '[$symbol ]($style)'
-style = 'bg:{{ .colours.accentFourBright }} fg:{{ .colours.accentFourForeground }}'
+style = 'bg:{{ $hostBackground }} fg:{{ $hostForeground }}'
 
 [os.symbols]
 Ubuntu = ''

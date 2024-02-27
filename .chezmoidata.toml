@@ -1,21 +1,2 @@
-[colours]
-bodyError = "#A8006A"
-bodySuccess = "#73A800"
-
-accentOne = "#00A8A5"
-accentOneBright = "#00FFFF"
-accentOneForeground = "#E0E0E0"
-
-accentTwo = "#A8006A"
-accentTwoBright = "#FF0099"
-accentTwoForeground = "#E0E0E0"
-accentTwoError = "#FF8B6B"
-accentTwoSuccess = "#C4FF78"
-
-accentThree = "#73A800"
-accentThreeBright = "#CCFF00"
-accentThreeForeground = "#E0E0E0"
-
-accentFour = "#0021A8"
-accentFourBright = "#0033FF"
-accentFourForeground = "#E0E0E0"
+[activeScheme]
+name = "venusFort"
