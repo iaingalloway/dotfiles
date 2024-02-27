@@ -1,0 +1,46 @@
+[colourSchemes.synthwaveSunset]
+name = "Synthwave Sunset"
+
+success = "green"
+error = "red"
+
+accentOne = "purple"
+accentOneBright = "brightPurple"
+accentOneForeground = "foreground"
+
+accentTwo = "cyan"
+accentTwoBright = "brightCyan"
+accentTwoForeground = "foreground"
+accentTwoError = "brightRed"
+accentTwoSuccess = "brightGreen"
+
+accentThree = "yellow"
+accentThreeBright = "yellow"
+accentThreeForeground = "foreground"
+
+accentFour = "blue"
+accentFourBright = "brightBlue"
+accentFourForeground = "foreground"
+
+black = "#000000"
+brightBlack = "#555753"
+blue = "#5900B8"
+brightBlue = "#8C1EFF"
+cyan = "#00A5A5"
+brightCyan = "#00E0E0"
+green = "#73A800"
+brightGreen = "#CCFF00"
+purple = "#B000BD"
+brightPurple = "#F222FF"
+red = "#C20044"
+brightRed = "#FF2975"
+white = "#D3D7CF"
+brightWhite = "#E0E0E0"
+yellow = "#FDAF40"
+brightYellow = "#FDF200"
+
+background = "#000000"
+foreground = "#FFFFFF"
+
+cursorColor = "#FFFFFF"
+selectionBackground = "#000000"
