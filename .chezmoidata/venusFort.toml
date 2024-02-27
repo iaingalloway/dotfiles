@@ -1,6 +1,8 @@
 [colourSchemes.venusFort]
 name = "Venus Fort"
 
+windowsTerminalTheme = "light"
+
 success = "green"
 error = "red"
 

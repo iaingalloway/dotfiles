@@ -1,6 +1,8 @@
 [colourSchemes.synthwaveSunrise]
 name = "Synthwave Sunrise"
 
+windowsTerminalTheme = "light"
+
 success = "green"
 error = "red"
 
