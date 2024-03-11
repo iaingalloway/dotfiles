@@ -27,9 +27,9 @@ _docker_exec_completion() {
 complete -F _docker_exec_completion de
 
 if [ -f /etc/bash_completion.d/docker ]; then
-    source /etc/bash_completion.d/docker
+    source /etc/bash_completion.d/docker &> /dev/null || true
 elif [ -f /usr/share/bash-completion/completions/docker ]; then
-    source /usr/share/bash-completion/completions/docker
+    source /usr/share/bash-completion/completions/docker &> /dev/null || true
 fi
 
 # git
