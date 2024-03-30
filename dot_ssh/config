@@ -1,0 +1,13 @@
+Include config.d/*
+
+Host eris
+  HostName eris
+  Port 22
+  user iaing
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/id_rsa
+Host eris-wsl
+  HostName localhost
+  Port 20022
+  User iain
+  ProxyJump eris
