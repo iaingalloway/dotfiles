@@ -1,5 +1,11 @@
 Include config.d/*
 
+Host enyo
+  HostName enyo
+  Port 22
+  user iain
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/id_rsa
 Host eris
   HostName eris
   Port 22
