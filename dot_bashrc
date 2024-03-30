@@ -115,11 +115,15 @@ fi
 # configure starship
 eval "$(starship init bash)"
 
-# configure kind
-source <(kind completion bash)
+# configure kind completion
+if command -v kind &> /dev/null; then
+    source <(kind completion bash)
+fi
 
 # configure kubectl completion
-source <(kubectl completion bash)
+if command -v kubectl &> /dev/null; then
+    source <(kubectl completion bash)
+fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/iain/google-cloud-sdk/path.bash.inc' ]; then . '/home/iain/google-cloud-sdk/path.bash.inc'; fi
