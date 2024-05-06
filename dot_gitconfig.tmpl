@@ -83,7 +83,7 @@
   unstage = reset HEAD
 
   # Append the currently staged files to the latest commit
-  append = commit --amend --reuse-message=HEAD
+  append = commit --amend --no-edit
 
   # Append all changes in the working tree to the latest commit
   append-all = !git add --all && git append
