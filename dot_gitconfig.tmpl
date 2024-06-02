@@ -118,11 +118,12 @@
   main = !git current-remote-set-head >/dev/null 2>&1 && git for-each-ref --format='%(refname:lstrip=3)' $(git symbolic-ref refs/remotes/$(git current-remote)/HEAD) || (echo 'No remote' && exit 1)
 
   # Initialise a new repository using an existing repository as a template
-  new = "!f() { git new-get $1 $2 && git new-init $2 && git new-script $2 && git new-sed $1 $2; }; f"
-  new-get = "!f() { git new-clone git@github.com:$(git config github.user)/$1 $2 || git new-clone git@github.com:$1 $2 || git new-clone $1 $2; }; f"
+  new = "!f() { git new-get $1 $2 && git new-init $2 && git new-script $2 && git new-replace $1 $2; }; f"
+  new-get = "!f() { git new-clone git@github.com:$(git config github.user)/$1-template $2 || git new-clone git@github.com:$(git config github.user)/$1 $2 || git new-clone git@github.com:$1 $2 || git new-clone $1 $2; }; f"
   new-clone = "clone --depth 1"
   new-init = "!f() { cd $1 && rm -rf .git && git init; }; f"
-  new-script = "!f() { test -f $1/init.sh && sh $1/init.sh && rm $1/init.sh; }; f"
+  new-script = "!f() { test -f $1/init.sh && sh $1/init.sh && rm $1/init.sh || exit 0; }; f"
+  new-replace = "!f() { git new-sed $1-template $2 && git new-sed $1 $2; }; f"
   new-sed = "!f() { find $2 -type f -exec sed -i \"s/$1/$2/g\" {} +; }; f"
 
   # Get the path to the root of the repository
