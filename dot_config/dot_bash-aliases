@@ -7,30 +7,30 @@ alias dfu='chezmoi update --apply'
 alias dfx='chezmoi update --apply && pwsh.exe -Command "chezmoi update --apply"'
 
 # docker
+if [ -f /etc/bash_completion.d/docker ]; then
+    source /etc/bash_completion.d/docker &> /dev/null || true
+elif [ -f /usr/share/bash-completion/completions/docker ]; then
+    source /usr/share/bash-completion/completions/docker &> /dev/null || true
+fi
+
 alias d=docker
-complete -F _docker d
+complete -F  __start_docker d
 alias dr='docker run --rm -it'
 alias de='docker exec -it'
 
 _docker_run_completion() {
     COMP_WORDS=(docker run "${COMP_WORDS[@]:1}")
     COMP_CWORD=$((COMP_CWORD+1))
-    _docker
+    __start_docker
 }
 complete -F _docker_run_completion dr
 
 _docker_exec_completion() {
     COMP_WORDS=(docker exec "${COMP_WORDS[@]:1}")
     COMP_CWORD=$((COMP_CWORD+1))
-    _docker
+    __start_docker
 }
 complete -F _docker_exec_completion de
-
-if [ -f /etc/bash_completion.d/docker ]; then
-    source /etc/bash_completion.d/docker &> /dev/null || true
-elif [ -f /usr/share/bash-completion/completions/docker ]; then
-    source /usr/share/bash-completion/completions/docker &> /dev/null || true
-fi
 
 # git
 source /usr/share/bash-completion/completions/git
