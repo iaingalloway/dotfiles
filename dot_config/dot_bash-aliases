@@ -51,6 +51,8 @@ alias klist='kubectl config get-contexts'
 alias kuse='kubectl config use-context'
 _kubectl_contexts()
 {
+    local cur
+    cur="${COMP_WORDS[COMP_CWORD]}"
     COMPREPLY=( $( compgen -W "$(kubectl config get-contexts --output='name')" -- "$cur" ) )
 }
 complete -F _kubectl_contexts kuse
