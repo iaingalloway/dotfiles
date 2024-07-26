@@ -56,3 +56,7 @@ _kubectl_contexts()
     COMPREPLY=( $( compgen -W "$(kubectl config get-contexts --output='name')" -- "$cur" ) )
 }
 complete -F _kubectl_contexts kuse
+
+# vscode
+
+alias c='code $(git rev-parse --show-toplevel 2>/dev/null || echo .)'
