@@ -64,26 +64,30 @@ function ga { git add $args }
 function gl { git l $args }
 
 # kubectl
-$KubectlCompletionScript = (kubectl completion powershell)
-$KubectlCompletionScript | Out-String | Invoke-Expression
+if (Get-Command kubectl -ErrorAction SilentlyContinue) {
 
-New-Alias k kubectl
-$KubectlAliasCompletionScript = $KubectlCompletionScript -replace "kubectl", "k"
-$KubectlAliasCompletionScript | Out-String | Invoke-Expression
+  $KubectlCompletionScript = (kubectl completion powershell)
+  $KubectlCompletionScript | Out-String | Invoke-Expression
 
-function kclear { kubectl config unset current-context }
-function kuse {
-  param(
-    [string]$Context
-  )
+  New-Alias k kubectl
+  $KubectlAliasCompletionScript = $KubectlCompletionScript -replace "kubectl", "k"
+  $KubectlAliasCompletionScript | Out-String | Invoke-Expression
 
-  kubectl config use-context $Context
-}
+  function kclear { kubectl config unset current-context }
+  function kuse {
+    param(
+      [string]$Context
+    )
 
-Register-ArgumentCompleter -CommandName kuse -ParameterName Context -ScriptBlock {
-  param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)
-  $Contexts = (kubectl config get-contexts --output='name') | Where-Object { $_ -like "$wordToComplete*" }
-  return $Contexts
+    kubectl config use-context $Context
+  }
+
+  Register-ArgumentCompleter -CommandName kuse -ParameterName Context -ScriptBlock {
+    param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)
+    $Contexts = (kubectl config get-contexts --output='name') | Where-Object { $_ -like "$wordToComplete*" }
+    return $Contexts
+  }
+
 }
 
 #winget
