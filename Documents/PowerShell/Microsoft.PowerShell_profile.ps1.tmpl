@@ -100,3 +100,11 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
     [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
   }
 }
+
+# path
+$ScriptDirectory = "$HOME\Documents\PowerShell\Scripts"
+$PathEntries = $env:Path -split [IO.Path]::PathSeparator | Where-Object { $_ -ne "" }
+
+if (-not ($PathEntries -contains $ScriptDirectory)) {
+  $env:Path = ($PathEntries + $ScriptDirectory) -join [IO.Path]::PathSeparator
+}
