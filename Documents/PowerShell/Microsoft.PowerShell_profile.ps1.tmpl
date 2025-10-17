@@ -102,9 +102,17 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
 }
 
 # path
-$ScriptDirectory = "$HOME\Documents\PowerShell\Scripts"
+$CustomPaths = @(
+    "$HOME\Documents\PowerShell\Scripts",
+    (Join-Path $env:ProgramFiles "SuperCollider-3.13.0")
+)
+
 $PathEntries = $env:Path -split [IO.Path]::PathSeparator | Where-Object { $_ -ne "" }
 
-if (-not ($PathEntries -contains $ScriptDirectory)) {
-  $env:Path = ($PathEntries + $ScriptDirectory) -join [IO.Path]::PathSeparator
+foreach ($p in $CustomPaths) {
+    if (-not ($PathEntries -contains $p)) {
+        $PathEntries += $p
+    }
 }
+
+$env:Path = $PathEntries -join [IO.Path]::PathSeparator
