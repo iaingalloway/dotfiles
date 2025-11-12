@@ -138,7 +138,7 @@
   remove-hooks = !git config --local --unset-all core.hooksPath
 
   # Show a summary of status of the repository
-  short-status = !echo && git pwd && git current-branch || true && git status --porcelain
+  short-status = !echo && (git pwd 2>/dev/null && (git current-branch || true) && git status --porcelain) || (pwd && echo "Not a git repository")
 
   # Rebase on top of origin/main
   up = !git current-remote-set-head && git rebase $(git current-remote)/HEAD
