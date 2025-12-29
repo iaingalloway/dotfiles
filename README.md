@@ -5,14 +5,14 @@ My dotfiles, managed with [chezmoi](https://www.chezmoi.io/).
 On linux:
 
 ```bash
-sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply iaingalloway
+sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --ssh --apply iaingalloway
 ```
 
 On windows:
 
 ```powershell
 winget install -e --id twpayne.chezmoi
-chezmoi init --apply iaingalloway
+chezmoi init --ssh --apply iaingalloway
 ```
 
 Cheat sheet:
