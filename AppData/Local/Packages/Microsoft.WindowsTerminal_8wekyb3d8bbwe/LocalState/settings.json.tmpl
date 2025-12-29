@@ -2,148 +2,160 @@
 {{- $activeScheme := index .colourSchemes $activeSchemeName -}}
 
 {
-  "$help": "https://aka.ms/terminal-documentation",
-  "$schema": "https://aka.ms/terminal-profiles-schema",
-  "actions": [
-    {
-      "command": "find",
-      "keys": "ctrl+shift+f"
-    },
-    {
-      "command": {
-        "action": "splitPane",
-        "split": "auto",
-        "splitMode": "duplicate"
-      },
-      "keys": "alt+shift+d"
-    },
-    {
-      "command": "paste",
-      "keys": "ctrl+v"
-    },
-    {
-      "command": "duplicateTab",
-      "keys": "ctrl+t"
-    },
-    {
-      "command": {
-        "action": "copy",
-        "singleLine": false
-      },
-      "keys": "ctrl+c"
-    },
-    {
-      "command": "closePane",
-      "keys": "ctrl+f4"
-    },
-    {
-      "command": {
-        "action": "splitPane"
-      },
-      "keys": "shift+pgup"
-    },
-    {
-      "command": {
-        "action": "moveFocus",
-        "direction": "previous"
-      },
-      "keys": "alt+shift+down"
-    }
-  ],
-  "copyFormatting": "none",
-  "copyOnSelect": false,
-  "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-  "profiles": {
-    "defaults": {
-      "bellStyle": "window",
-      "colorScheme": "{{ $activeScheme.name }}",
-      "font": {
-        "face": "CaskaydiaCove Nerd Font Mono",
-        "features": {
-          "calt": 0
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions":
+    [
+        {
+            "command":
+            {
+                "action": "splitPane"
+            },
+            "id": "User.splitPane.91AB55B1"
+        }
+    ],
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+    "keybindings":
+    [
+        {
+            "id": "Terminal.FindText",
+            "keys": "ctrl+shift+f"
         },
-        "size": 13.0
-      },
-      "opacity": 95,
-      "useAtlasEngine": true
-    },
-    "list": [
-      {
-        "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-        "hidden": false,
-        "name": "Ubuntu",
-        "source": "Windows.Terminal.Wsl"
-      },
-      {
-        "bellStyle": "none",
-        "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-        "hidden": false,
-        "name": "PowerShell",
-        "source": "Windows.Terminal.PowershellCore"
-      },
-      {
-        "commandline": "%SystemRoot%\\System32\\cmd.exe",
-        "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-        "hidden": false,
-        "name": "Command Prompt"
-      },
-      {
-        "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-        "hidden": true,
-        "name": "Windows PowerShell"
-      },
-      {
-        "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-        "hidden": true,
-        "name": "Azure Cloud Shell",
-        "source": "Windows.Terminal.Azure"
-      },
-      {
-        "guid": "{352b143d-d9d5-5e85-ab66-b67c7d09f574}",
-        "hidden": true,
-        "name": "Developer Command Prompt for VS 2022",
-        "source": "Windows.Terminal.VisualStudio"
-      },
-      {
-        "guid": "{982524ca-53d1-5137-a328-9f45c450c2bb}",
-        "hidden": true,
-        "name": "Developer PowerShell for VS 2022",
-        "source": "Windows.Terminal.VisualStudio"
-      },
-      {
-        "guid": "{16208362-94fc-5b1f-a491-5b2624d5ab56}",
-        "hidden": true,
-        "name": "Visual Studio Debug Console",
-        "source": "VSDebugConsole"
-      }
-    ]
-  },
-  "schemes": [
+        {
+            "id": "Terminal.PasteFromClipboard",
+            "keys": "ctrl+v"
+        },
+        {
+            "id": "Terminal.ClosePane",
+            "keys": "ctrl+f4"
+        },
+        {
+            "id": "Terminal.DuplicatePaneAuto",
+            "keys": "alt+shift+d"
+        },
+        {
+            "id": "Terminal.DuplicateTab",
+            "keys": "ctrl+t"
+        },
+        {
+            "id": "Terminal.CopyToClipboard",
+            "keys": "ctrl+c"
+        },
+        {
+            "id": "User.splitPane.91AB55B1",
+            "keys": "shift+pgup"
+        },
+        {
+            "id": "Terminal.MoveFocusPrevious",
+            "keys": "alt+shift+down"
+        }
+    ],
+    "newTabMenu":
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles":
     {
-      "background": "{{ $activeScheme.background }}",
-      "black": "{{ $activeScheme.black }}",
-      "blue": "{{ $activeScheme.blue }}",
-      "brightBlack": "{{ $activeScheme.brightBlack }}",
-      "brightBlue": "{{ $activeScheme.brightBlue }}",
-      "brightCyan": "{{ $activeScheme.brightCyan }}",
-      "brightGreen": "{{ $activeScheme.brightGreen }}",
-      "brightPurple": "{{ $activeScheme.brightPurple }}",
-      "brightRed": "{{ $activeScheme.brightRed }}",
-      "brightWhite": "{{ $activeScheme.brightWhite }}",
-      "brightYellow": "{{ $activeScheme.brightYellow }}",
-      "cursorColor": "{{ $activeScheme.cursorColor }}",
-      "cyan": "{{ $activeScheme.cyan }}",
-      "foreground": "{{ $activeScheme.foreground }}",
-      "green": "{{ $activeScheme.green }}",
-      "name": "{{ $activeScheme.name }}",
-      "purple": "{{ $activeScheme.purple }}",
-      "red": "{{ $activeScheme.red }}",
-      "selectionBackground": "{{ $activeScheme.selectionBackground }}",
-      "white": "{{ $activeScheme.white }}",
-      "yellow": "{{ $activeScheme.yellow }}"
-    }
-  ],
-  "theme": "{{ $activeScheme.windowsTerminalTheme }}",
-  "themes": []
+        "defaults":
+        {
+            "bellStyle": "window",
+            "colorScheme": "{{ $activeScheme.name }}",
+            "font":
+            {
+                "face": "CaskaydiaCove Nerd Font Mono",
+                "features":
+                {
+                    "calt": 0
+                },
+                "size": 13
+            },
+            "opacity": 95
+        },
+        "list":
+        [
+            {
+                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+                "hidden": false,
+                "name": "Ubuntu",
+                "commandline": "wsl.exe -d Ubuntu",
+                "startingDirectory": "~",
+                "icon": "none"
+            },
+            {
+                "bellStyle": "none",
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore"
+            },
+            {
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "Command Prompt"
+            },
+            {
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": true,
+                "name": "Windows PowerShell"
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": true,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
+            },
+            {
+                "guid": "{352b143d-d9d5-5e85-ab66-b67c7d09f574}",
+                "hidden": true,
+                "name": "Developer Command Prompt for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{982524ca-53d1-5137-a328-9f45c450c2bb}",
+                "hidden": true,
+                "name": "Developer PowerShell for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{16208362-94fc-5b1f-a491-5b2624d5ab56}",
+                "hidden": true,
+                "name": "Visual Studio Debug Console",
+                "source": "VSDebugConsole"
+            }
+        ]
+    },
+    "schemes":
+    [
+        {
+            "background": "{{ $activeScheme.background }}",
+            "black": "{{ $activeScheme.black }}",
+            "blue": "{{ $activeScheme.blue }}",
+            "brightBlack": "{{ $activeScheme.brightBlack }}",
+            "brightBlue": "{{ $activeScheme.brightBlue }}",
+            "brightCyan": "{{ $activeScheme.brightCyan }}",
+            "brightGreen": "{{ $activeScheme.brightGreen }}",
+            "brightPurple": "{{ $activeScheme.brightPurple }}",
+            "brightRed": "{{ $activeScheme.brightRed }}",
+            "brightWhite": "{{ $activeScheme.brightWhite }}",
+            "brightYellow": "{{ $activeScheme.brightYellow }}",
+            "cursorColor": "{{ $activeScheme.cursorColor }}",
+            "cyan": "{{ $activeScheme.cyan }}",
+            "foreground": "{{ $activeScheme.foreground }}",
+            "green": "{{ $activeScheme.green }}",
+            "name": "{{ $activeScheme.name }}",
+            "purple": "{{ $activeScheme.purple }}",
+            "red": "{{ $activeScheme.red }}",
+            "selectionBackground": "{{ $activeScheme.selectionBackground }}",
+            "white": "{{ $activeScheme.white }}",
+            "yellow": "{{ $activeScheme.yellow }}"
+        }
+    ],
+    "theme": "{{ $activeScheme.windowsTerminalTheme }}",
+    "themes": []
 }
