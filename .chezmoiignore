@@ -1,4 +1,5 @@
 {{- if eq .chezmoi.os "windows" -}}
+repos
 .bashrc
 .config/.bash-aliases
 README.md
