@@ -23,6 +23,7 @@ format = """\
 [](fg:{{ $hostBackground }})\
 $os\
 $hostname\
+$nix_shell\
 [](bg:{{ $directoryBackground }} fg:{{ $hostBackground }})\
 $directory\
 [](bg:{{ $gitBackground }} fg:{{ $directoryBackground }})\
@@ -109,6 +110,11 @@ context_alias = 'gke-$var_cluster'
 [[kubernetes.contexts]]
 context_pattern = 'kind-(?P<var_cluster>[\w-]+)'
 context_alias = '$var_cluster'
+
+[nix_shell]
+format = '[$symbol]($style)'
+symbol = '󱄅 '
+style = 'bg:{{ $hostBackground }} fg:{{ $hostForeground }}'
 
 [os]
 disabled = false
