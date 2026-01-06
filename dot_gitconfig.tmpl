@@ -27,6 +27,8 @@
 [alias]
   a = add
 
+  ac = "!f() { git add \"$GIT_PREFIX$1\" && git commit -m \"Add $1\"; }; f"
+
   ai = add --interactive
 
   ap = add --patch
@@ -81,6 +83,8 @@
 
   # Create a tag with an empty message
   t = tag -a --message=""
+
+  uc = "!f() { git add \"$GIT_PREFIX$1\" && git commit -m \"Update $1\"; }; f"
 
   unstage = reset HEAD
 
