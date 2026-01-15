@@ -73,6 +73,6 @@ _kubectl_contexts()
 complete -F _kubectl_contexts kuse
 complete -F _kubectl_contexts kdelete
 
-# vscode
+# vim
 
-alias c='code $(git rev-parse --show-toplevel 2>/dev/null || echo .)'
+alias c='vim $(git rev-parse --show-toplevel 2>/dev/null || echo .)'
