@@ -2,6 +2,17 @@
 
 My dotfiles, managed with [chezmoi](https://www.chezmoi.io/).
 
+## Prerequisites
+
+- [Git](https://git-scm.com/)
+- [Chezmoi](https://www.chezmoi.io/)
+- [Starship](https://starship.rs/)
+- Optionally:
+  - [Nix](https://nixos.org/)
+  - [Direnv](https://direnv.net/)
+
+## Installation
+
 On linux:
 
 ```bash
@@ -15,7 +26,7 @@ winget install -e --id twpayne.chezmoi
 chezmoi init --ssh --apply iaingalloway
 ```
 
-Cheat sheet:
+## Cheat sheet
 
 ```bash
 # open a subshell in chezmoi's source directory
