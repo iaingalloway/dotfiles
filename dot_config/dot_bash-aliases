@@ -36,6 +36,7 @@ complete -F _docker_exec_completion de
 source /usr/share/bash-completion/completions/git
 alias g=git
 __git_complete g __git_main
+alias gr='cd $(git rev-parse --show-toplevel)'
 alias gs='git status'
 __git_complete gs _git_status
 alias ga='git add'
