@@ -83,8 +83,8 @@
   t = tag -a --message=""
 
   # Add a file and commit with a message that includes the verb "Add" or "Update" depending on whether the file is already tracked
-  ac = "!f() { git ls-files --error-unmatch -- \"$GIT_PREFIX$1\" >/dev/null 2>&1 && git ac-verb \"$1\" Update || git ac-verb \"$1\" Add; }; f"
-  ac-verb = "!f() { git add \"$GIT_PREFIX$1\" && git commit -m \"$2 $1\"; }; f"
+  ac = "!f() { git ls-files --error-unmatch -- \"$GIT_PREFIX$1\" >/dev/null 2>&1 && git ac-verb \"$1\" Update "$GIT_PREFIX" || git ac-verb \"$1\" Add "$GIT_PREFIX"; }; f"
+  ac-verb = "!f() { git add \"$3$1\" && git commit -m \"$2 $1\"; }; f"
 
   # Amend the latest commit
   amend = commit --amend
