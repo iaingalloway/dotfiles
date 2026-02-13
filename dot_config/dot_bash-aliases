@@ -44,6 +44,10 @@ __git_complete ga _git_add
 alias gl='git l'
 __git_complete gl _git_log
 
+_git_ac() {
+  _git_add
+}
+
 # kubectl
 alias k=kubectl
 complete -o default -F __start_kubectl k
