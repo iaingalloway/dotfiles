@@ -27,10 +27,6 @@
 [alias]
   a = add
 
-  ac = "!f() { git ls-files --error-unmatch -- \"$GIT_PREFIX$1\" >/dev/null 2>&1 && git ac-verb \"$1\" Update || git ac-verb \"$1\" Add; }; f"
-
-  ac-verb = "!f() { git add \"$GIT_PREFIX$1\" && git commit -m \"$2 $1\"; }; f"
-
   ai = add --interactive
 
   ap = add --patch
@@ -86,7 +82,9 @@
   # Create a tag with an empty message
   t = tag -a --message=""
 
-  unstage = reset HEAD
+  # Add a file and commit with a message that includes the verb "Add" or "Update" depending on whether the file is already tracked
+  ac = "!f() { git ls-files --error-unmatch -- \"$GIT_PREFIX$1\" >/dev/null 2>&1 && git ac-verb \"$1\" Update || git ac-verb \"$1\" Add; }; f"
+  ac-verb = "!f() { git add \"$GIT_PREFIX$1\" && git commit -m \"$2 $1\"; }; f"
 
   # Amend the latest commit
   amend = commit --amend
@@ -143,6 +141,9 @@
 
   # Show a summary of status of the repository
   short-status = !echo && (git pwd 2>/dev/null && (git current-branch || true) && git status --porcelain) || (pwd && echo "Not a git repository")
+
+  # Remove all changes from the index and the working tree
+  unstage = reset HEAD
 
   # Rebase on top of origin/main
   up = !git current-remote-set-head && git rebase $(git current-remote)/HEAD
