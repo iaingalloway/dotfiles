@@ -13,16 +13,25 @@ My dotfiles, managed with [chezmoi](https://www.chezmoi.io/).
 
 ## Installation
 
-On linux:
+On Ubuntu on WSL:
 
 ```bash
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
+
+sudo apt upgrade && sudo apt install -y direnv
+
+curl -sS https://starship.rs/install.sh | sh
+
 sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --ssh --apply iaingalloway
 ```
 
-On windows:
+On Windows:
 
 ```powershell
+winget install -e --id Git.Git
+winget install -e --id Starship.Starship
 winget install -e --id twpayne.chezmoi
+
 chezmoi init --ssh --apply iaingalloway
 ```
 
