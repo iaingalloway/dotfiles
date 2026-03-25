@@ -48,6 +48,10 @@ _git_ac() {
   _git_add
 }
 
+# just
+alias j=just
+complete -o default -F _just -o bashdefault j
+
 # kubectl
 alias k=kubectl
 complete -o default -F __start_kubectl k
