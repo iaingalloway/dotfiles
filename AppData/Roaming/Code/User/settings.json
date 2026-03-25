@@ -1,4 +1,6 @@
 {
+  "accessibility.voice.keywordActivation": "chatInView",
+  "accessibility.voice.speechTimeout": 2500,
   "editor.inlineSuggest.enabled": true,
   "github.copilot.enable": {
     "*": true,
