@@ -78,5 +78,4 @@ complete -F _kubectl_contexts kuse
 complete -F _kubectl_contexts kdelete
 
 # vscode
-
 alias c='code $(git rev-parse --show-toplevel 2>/dev/null || echo .)'

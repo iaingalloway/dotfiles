@@ -83,6 +83,7 @@ if command -v kubectl &> /dev/null; then
   source <(kubectl completion bash)
 fi
 
+# direnv hook
 if command -v direnv &> /dev/null; then
   eval "$(direnv hook bash)"
 fi
