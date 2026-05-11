@@ -50,7 +50,7 @@ _git_ac() {
 
 # just
 alias j=just
-complete -o default -F _just -o bashdefault j
+complete -o bashdefault -o nosort -o nospace -F _clap_complete_just j
 
 # kubectl
 alias k=kubectl
