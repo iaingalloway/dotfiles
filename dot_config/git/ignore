@@ -1,5 +1,5 @@
-.vscode/
+.vscode/*
 .direnv
 
-ig-notes/
+ig-notes/*
 ig-notes.md
