@@ -1,0 +1,3 @@
+[submodule "dot_config/dotfiles-overlay"]
+	path = dot_config/exact_dotfiles-overlay
+	url = git@github.com:iaingalloway/dotfiles-overlay.git

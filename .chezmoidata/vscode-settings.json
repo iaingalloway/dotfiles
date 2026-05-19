@@ -1,0 +1,9 @@
+{
+  "vscodeSettings": {
+    "terminal.integrated.fontFamily": "CaskaydiaCove Nerd Font Mono",
+    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.minimumContrastRatio": 1,
+    "workbench.colorTheme": "Visual Studio Light",
+    "window.title": "${dirty}${rootName}${separator}${activeEditorShort}${separator}${profileName}${separator}${appName}"
+  }
+}
