@@ -1,3 +1,6 @@
 busybox:latest
 debian:trixie-slim
 mpepping/ponysay:3.0.4
+mcr.microsoft.com/dotnet/sdk:10.0.201-noble
+mcr.microsoft.com/dotnet/aspnet:10.0.5-noble
+postgres:18.4-trixie
