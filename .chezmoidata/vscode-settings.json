@@ -7,6 +7,7 @@
     "terminal.integrated.fontSize": 13,
     "terminal.integrated.minimumContrastRatio": 1,
     "window.title": "${dirty}${rootName}${separator}${activeEditorShort}${separator}${profileName}${separator}${appName}",
+    "workbench.browser.openLocalhostLinks": false,
     "workbench.colorTheme": "Visual Studio Light"
   }
 }
