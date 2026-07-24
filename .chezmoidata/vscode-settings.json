@@ -1,8 +1,10 @@
 {
   "vscodeSettings": {
+    "dev.containers.experimentalMountGitWorktreeCommonDir": true,
     "files.associations": {
       "justfile": "plaintext"
     },
+    "git.detectWorktrees": true,
     "terminal.integrated.fontFamily": "CaskaydiaCove Nerd Font Mono",
     "terminal.integrated.fontSize": 13,
     "terminal.integrated.minimumContrastRatio": 1,
