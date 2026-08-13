@@ -10,6 +10,7 @@
     "terminal.integrated.minimumContrastRatio": 1,
     "window.title": "${dirty}${rootName}${separator}${activeEditorShort}${separator}${profileName}${separator}${appName}",
     "workbench.browser.openLocalhostLinks": false,
-    "workbench.colorTheme": "Visual Studio Light"
+    "workbench.colorTheme": "Visual Studio Light",
+    "workbench.experimental.modernUI": false
   }
 }
