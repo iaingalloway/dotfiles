@@ -46,6 +46,10 @@ function dfu {
 function dfx {
   chezmoi update --apply && wsl bash -lic "chezmoi update --apply"
 }
+function Update-Environment {
+  sudo winget upgrade --include-unknown --all --silent && dfx && wsl -- sudo apt update && wsl -- sudo apt upgrade -y
+}
+New-Alias ue Update-Environment
 
 # dotnet
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
