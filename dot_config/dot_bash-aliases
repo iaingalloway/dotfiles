@@ -5,7 +5,18 @@ alias dotfiles='code $(chezmoi source-path)'
 alias df='dotfiles'
 alias dfu='chezmoi update --apply'
 alias dfx='chezmoi update --apply && pwsh.exe -Command "chezmoi update --apply"'
-alias ue='pwsh.exe -Command Update-Environment'
+
+update-apt() {
+  sudo apt update && sudo apt upgrade -y
+}
+
+alias au='update-apt'
+
+update-environment() {
+  pwsh.exe -Command Update-Winget && dfx && update-apt
+}
+
+alias ue='update-environment'
 
 # docker
 if [ -f /etc/bash_completion.d/docker ]; then

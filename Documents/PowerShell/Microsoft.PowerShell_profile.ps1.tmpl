@@ -46,8 +46,11 @@ function dfu {
 function dfx {
   chezmoi update --apply && wsl bash -lic "chezmoi update --apply"
 }
+function Update-Winget {
+  sudo winget upgrade --include-unknown --all --silent
+}
 function Update-Environment {
-  sudo winget upgrade --include-unknown --all --silent && dfx && wsl -- sudo apt update && wsl -- sudo apt upgrade -y
+  Update-Winget && dfx && wsl bash -lic "update-apt"
 }
 New-Alias ue Update-Environment
 
