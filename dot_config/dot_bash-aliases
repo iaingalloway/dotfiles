@@ -4,7 +4,12 @@
 alias dotfiles='code $(chezmoi source-path)'
 alias df='dotfiles'
 alias dfu='chezmoi update --apply'
-alias dfx='chezmoi update --apply && pwsh.exe -Command "chezmoi update --apply"'
+
+p() {
+  pwsh.exe -Command "$*"
+}
+
+alias dfx='chezmoi update --apply && p "chezmoi update --apply"'
 
 update-apt() {
   sudo apt update && sudo apt upgrade -y
@@ -13,7 +18,7 @@ update-apt() {
 alias au='update-apt'
 
 update-environment() {
-  pwsh.exe -Command Update-Winget && dfx && update-apt
+  p Update-Winget && dfx && update-apt
 }
 
 alias ue='update-environment'
