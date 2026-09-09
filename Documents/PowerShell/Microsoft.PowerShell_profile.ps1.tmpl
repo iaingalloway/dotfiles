@@ -33,6 +33,14 @@ $p.ProgressBackgroundColor = "White"
 
 Invoke-Expression (&starship init powershell)
 
+function Update-Winget {
+  sudo winget upgrade --include-unknown --all --silent
+}
+function Update-Environment {
+  Update-Winget && dfx && wsl -- bash -lic "update-apt"
+}
+New-Alias ue Update-Environment
+
 # chezmoi
 function Edit-Dotfiles {
   code (chezmoi source-path)
@@ -46,13 +54,6 @@ function dfu {
 function dfx {
   chezmoi update --apply && wsl -- bash -lic "chezmoi update --apply"
 }
-function Update-Winget {
-  sudo winget upgrade --include-unknown --all --silent
-}
-function Update-Environment {
-  Update-Winget && dfx && wsl -- bash -lic "update-apt"
-}
-New-Alias ue Update-Environment
 
 # dotnet
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {

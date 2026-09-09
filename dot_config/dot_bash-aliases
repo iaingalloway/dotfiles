@@ -4,24 +4,7 @@
 alias dotfiles='code $(chezmoi source-path)'
 alias df='dotfiles'
 alias dfu='chezmoi update --apply'
-
-p() {
-  pwsh.exe -Command "$*"
-}
-
 alias dfx='chezmoi update --apply && p "chezmoi update --apply"'
-
-update-apt() {
-  sudo apt update && sudo apt upgrade -y
-}
-
-alias au='update-apt'
-
-update-environment() {
-  p Update-Winget && dfx && update-apt
-}
-
-alias ue='update-environment'
 
 # docker
 if [ -f /etc/bash_completion.d/docker ]; then
@@ -132,5 +115,23 @@ _kubectl_contexts()
 complete -F _kubectl_contexts kuse
 complete -F _kubectl_contexts kdelete
 
+# powershell
+
+p() {
+  pwsh.exe -Command "$*"
+}
+
 # vscode
 alias c='code $(git rev-parse --show-toplevel 2>/dev/null || echo .)'
+
+# helper functions for updates
+
+update-apt() {
+  sudo apt update && sudo apt upgrade -y
+}
+alias au='update-apt'
+
+update-environment() {
+  p Update-Winget && dfx && update-apt
+}
+alias ue='update-environment'
