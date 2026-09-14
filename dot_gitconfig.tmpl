@@ -53,6 +53,10 @@
 
   f = fetch
 
+  fs = foreach-subdirectory
+
+  fss = foreach-subdirectory short-status
+
   l = lf -n 20
 
   lc = l-concise -n 40
@@ -114,10 +118,11 @@
   discard = !git reset HEAD . -- && git restore -- . && git clean -fd .
 
   # Perform a git command in each subdirectory of the current directory
-  foreach-subdirectory = !ls -d */ | xargs -I{} git -C {}
-
-  # Show the status of each subdirectory of the current directory
-  foreach-subdirectory-status = foreach-subdirectory short-status
+  foreach-subdirectory = "!f() { ls -d */ | xargs -I{} git foreach-run \"{}\" \"$@\"; }; f"
+  foreach-run = "!f() { git foreach-separator \"$1\"; git foreach-is-worktree \"$1\" || { echo 'Not a git repository'; return; }; git foreach-command \"$@\"; }; f"
+  foreach-separator = "!f() { printf '\\n%s\\n' \"$1\"; }; f"
+  foreach-is-worktree = "!f() { git -C \"$1\" rev-parse --is-inside-work-tree >/dev/null 2>&1; }; f"
+  foreach-command = "!f() { directory=\"$1\"; shift; git -C \"$directory\" \"$@\"; }; f"
 
   # Get the name of main branch
   main = !git current-remote-set-head >/dev/null 2>&1 && git for-each-ref --format='%(refname:lstrip=3)' $(git symbolic-ref refs/remotes/$(git current-remote)/HEAD) || (echo 'No remote' && exit 1)
@@ -140,7 +145,7 @@
   remove-hooks = !git config --local --unset-all core.hooksPath
 
   # Show a summary of status of the repository
-  short-status = !echo && (git pwd 2>/dev/null && (git current-branch || true) && git status --porcelain) || (pwd && echo "Not a git repository")
+  short-status = !(git current-branch || true) && git status --porcelain
 
   # Remove all changes from the index and the working tree
   unstage = reset HEAD
