@@ -61,7 +61,7 @@
 
   lc = l-concise -n 40
 
-  lf = "!git log --graph --pretty=format:'%C({{ $hash }})%h%Creset %s %C({{ $decorate }})%(decorate:prefix=,suffix= ,tag=,separator= ,pointer=>)%C({{ $author }})%an %cr%Creset'"
+  lf = "!git log --graph --decorate-refs-exclude=HEAD --decorate-refs-exclude='refs/remotes/*/HEAD' --pretty=format:'%C({{ $hash }})%h%Creset %s %C({{ $decorate }})%(decorate:prefix=,suffix= ,tag=,separator= ,pointer=>)%C({{ $author }})%an %cr%Creset'"
 
   l-concise = "!git log --graph --pretty=format:'%C(#00A8A5)%h%Creset %<(80,trunc)%s'"
 
