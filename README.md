@@ -6,21 +6,13 @@ My dotfiles, managed with [chezmoi](https://www.chezmoi.io/).
 
 - [Git](https://git-scm.com/)
 - [Chezmoi](https://www.chezmoi.io/)
-- Optionally:
-  - [Nix](https://nixos.org/)
-  - [Direnv](https://direnv.net/)
 
 ## Installation
 
 On Ubuntu on WSL:
 
 ```bash
-sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
-
-sudo apt upgrade && sudo apt install -y direnv
-
 curl -sS https://starship.rs/install.sh | sh
-
 sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --ssh --apply iaingalloway
 
 ue
