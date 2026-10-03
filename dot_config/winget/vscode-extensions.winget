@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+
+# v3 doesn't yet support allowPrerelease to install Microsoft.VSCode.Dsc
+# https://github.com/microsoft/winget-cli/issues/5700
+# https://github.com/PowerShell/DSC/issues/398
+#
+# There's a workaround, but it's rancid. We'll use v2 for now.
+# https://raw.githubusercontent.com/microsoft/winget-dsc/main/samples/DscResources/Microsoft.VSCode.Dsc/InstallVSCodeExtensions.v3.winget
+
+properties:
+  assertions:
+    - resource: Microsoft.Windows.Developer/OsVersion
+      directives:
+        description: Verify min OS version requirement
+        allowPrerelease: true
+      settings:
+        MinVersion: '10.0.26200'
+  resources:
+    - resource: Microsoft.VSCode.Dsc/VSCodeExtension
+      directives:
+        allowPrerelease: true
+        description: Install the WSL extension for Visual Studio Code
+      settings:
+        Name: ms-vscode-remote.remote-wsl
+
+    - resource: Microsoft.VSCode.Dsc/VSCodeExtension
+      directives:
+        allowPrerelease: true
+        description: Install the Dev Containers extension for Visual Studio Code
+      settings:
+        Name: ms-vscode-remote.remote-containers
+
+  configurationVersion: 0.2.0

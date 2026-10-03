@@ -33,11 +33,30 @@ $p.ProgressBackgroundColor = "White"
 
 Invoke-Expression (&starship init powershell)
 
+function Invoke-WingetBootstrap {
+  Get-ChildItem (Join-Path $HOME '.config\winget') -Filter '*.winget' -File |
+    Sort-Object Name |
+    ForEach-Object {
+      winget configure --file $_.FullName --accept-configuration-agreements
+      if (-not $?) {
+        throw "WinGet configuration failed: $($_.FullName)"
+      }
+    }
+}
 function Update-Winget {
   sudo winget upgrade --include-unknown --all --silent
 }
+function Update-Ubuntu {
+  $distributions = @(& wsl.exe --list --quiet 2>$null)
+  if ($LASTEXITCODE -eq 0 -and $distributions -contains 'Ubuntu') {
+    wsl.exe --distribution Ubuntu -- bash -lic "chezmoi update --apply && update-apt"
+  }
+}
 function Update-Environment {
-  Update-Winget && dfx && wsl -- bash -lic "update-apt"
+  chezmoi update --apply &&
+    Invoke-WingetBootstrap &&
+    Update-Winget &&
+    Update-Ubuntu
 }
 New-Alias ue Update-Environment
 

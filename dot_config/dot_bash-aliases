@@ -132,6 +132,6 @@ update-apt() {
 alias au='update-apt'
 
 update-environment() {
-  p Update-Winget && dfx && update-apt
+  dfx && p Invoke-WingetBootstrap && p Update-Winget && update-apt
 }
 alias ue='update-environment'

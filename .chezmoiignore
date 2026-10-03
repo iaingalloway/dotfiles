@@ -9,4 +9,5 @@ README.md
 AppData
 Documents
 README.md
+.config/winget
 {{- end -}}
