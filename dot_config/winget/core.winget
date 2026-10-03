@@ -152,6 +152,8 @@ resources:
     type: Microsoft.Windows/Registry
     metadata:
       description: Disable search box suggestions
+      winget:
+        securityContext: elevated
     properties:
       keyPath: HKCU\Software\Policies\Microsoft\Windows\Explorer
       valueName: DisableSearchBoxSuggestions
