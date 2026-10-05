@@ -11,7 +11,7 @@ assertions:
     settings:
       MinVersion: '10.0.26200'
 resources:
-  - name: winget-source
+  - name: Winget Source
     type: Microsoft.WinGet/Source
     metadata:
       description: Configure the WinGet package source
@@ -22,7 +22,7 @@ resources:
       trustLevel: trusted
       type: Microsoft.PreIndexed.Package
 
-  - name: winget-font-source
+  - name: Winget Font Source
     type: Microsoft.WinGet/Source
     metadata:
       description: Configure the WinGet font source
@@ -33,7 +33,7 @@ resources:
       trustLevel: trusted
       type: Microsoft.PreIndexed.Package
 
-  - name: winget-user-settings
+  - name: Winget User Settings
     type: Microsoft.WinGet/UserSettingsFile
     metadata:
       description: Enable WinGet font packages
@@ -43,7 +43,7 @@ resources:
         experimentalFeatures:
           fonts: true
 
-  - name: sudo
+  - name: Sudo
     type: Microsoft.Windows/Registry
     metadata:
       description: Enable Windows Sudo with input disabled
@@ -56,88 +56,30 @@ resources:
         DWord: 2
       _exist: true
 
-  - name: wsl
+{{ range $package := .packages }}
+  - name: {{ replace "." " " $package }}
     type: Microsoft.WinGet/Package
     metadata:
-      description: Install Windows Subsystem for Linux
+      description: Install {{ $package }}
     dependsOn:
-      - winget-source
+      - Winget Source
     properties:
-      id: Microsoft.WSL
+      id: {{ $package }}
       source: winget
 
-  - name: powershell
-    type: Microsoft.WinGet/Package
-    metadata:
-      description: Install PowerShell
-    dependsOn:
-      - winget-source
-    properties:
-      id: Microsoft.PowerShell
-      source: winget
-
-  - name: windows-terminal
-    type: Microsoft.WinGet/Package
-    metadata:
-      description: Install Windows Terminal
-    dependsOn:
-      - winget-source
-    properties:
-      id: Microsoft.WindowsTerminal
-      source: winget
-
-  - name: visual-studio-code
-    type: Microsoft.WinGet/Package
-    metadata:
-      description: Install Visual Studio Code
-    dependsOn:
-      - winget-source
-    properties:
-      id: Microsoft.VisualStudioCode
-      source: winget
-
-  - name: docker-desktop
-    type: Microsoft.WinGet/Package
-    metadata:
-      description: Install Docker Desktop
-    dependsOn:
-      - winget-source
-    properties:
-      id: Docker.DockerDesktop
-      source: winget
-
-  - name: chrome
-    type: Microsoft.WinGet/Package
-    metadata:
-      description: Install Google Chrome
-    dependsOn:
-      - winget-source
-    properties:
-      id: Google.Chrome
-      source: winget
-
-  - name: starship
-    type: Microsoft.WinGet/Package
-    metadata:
-      description: Install Starship
-    dependsOn:
-      - winget-source
-    properties:
-      id: Starship.Starship
-      source: winget
-
-  - name: caskaydia-cove
+{{ end }}
+  - name: Caskaydia Cove Nerd Font
     type: Microsoft.WinGet/Package
     metadata:
       description: Install CaskaydiaCove Nerd Font
     dependsOn:
-      - winget-font-source
-      - winget-user-settings
+      - Winget Font Source
+      - Winget User Settings
     properties:
       id: ryanoasis.CaskaydiaCove
       source: winget-font
 
-  - name: taskbar-alignment
+  - name: Taskbar Alignment
     type: Microsoft.Windows/Registry
     metadata:
       description: Align taskbar buttons to the left
@@ -148,7 +90,7 @@ resources:
         DWord: 0
       _exist: true
 
-  - name: disable-search-suggestions
+  - name: Disable Search Suggestions
     type: Microsoft.Windows/Registry
     metadata:
       description: Disable search box suggestions
@@ -161,7 +103,7 @@ resources:
         DWord: 1
       _exist: true
 
-  - name: disable-content-delivery-suggestions
+  - name: Disable Content Delivery Suggestions
     type: Microsoft.Windows/Registry
     metadata:
       description: Disable suggested content in Windows
@@ -172,7 +114,7 @@ resources:
         DWord: 0
       _exist: true
 
-  - name: disable-content-delivery-tips
+  - name: Disable Content Delivery Tips
     type: Microsoft.Windows/Registry
     metadata:
       description: Disable suggested content in Windows
@@ -183,7 +125,7 @@ resources:
         DWord: 0
       _exist: true
 
-  - name: disable-windows-welcome-experience
+  - name: Disable Windows Welcome Experience
     type: Microsoft.Windows/Registry
     metadata:
       description: Disable the Windows welcome experience
@@ -194,7 +136,7 @@ resources:
         DWord: 0
       _exist: true
 
-  - name: disable-mouse-acceleration
+  - name: Disable Mouse Acceleration
     type: Microsoft.Windows/Registry
     metadata:
       description: Disable pointer acceleration
@@ -205,7 +147,7 @@ resources:
         String: '0'
       _exist: true
 
-  - name: disable-mouse-acceleration-threshold-1
+  - name: Disable Mouse Acceleration Threshold 1
     type: Microsoft.Windows/Registry
     metadata:
       description: Disable pointer acceleration
@@ -216,7 +158,7 @@ resources:
         String: '0'
       _exist: true
 
-  - name: disable-mouse-acceleration-threshold-2
+  - name: Disable Mouse Acceleration Threshold 2
     type: Microsoft.Windows/Registry
     metadata:
       description: Disable pointer acceleration

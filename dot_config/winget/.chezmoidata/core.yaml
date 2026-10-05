@@ -1,0 +1,8 @@
+packages:
+  - Microsoft.WSL
+  - Microsoft.PowerShell
+  - Microsoft.WindowsTerminal
+  - Microsoft.VisualStudioCode
+  - Docker.DockerDesktop
+  - Google.Chrome
+  - Starship.Starship
