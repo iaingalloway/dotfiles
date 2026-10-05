@@ -46,19 +46,19 @@ function Configure-Winget {
 function Update-Winget {
   sudo winget upgrade --include-unknown --all --silent
 }
-function Update-Ubuntu {
-  $distributions = @(& wsl.exe --list --quiet 2>$null)
-  if ($LASTEXITCODE -eq 0 -and $distributions -contains 'Ubuntu') {
-    wsl.exe --distribution Ubuntu -- bash -lic "chezmoi update --apply && update-apt"
-  }
+function Update-Windows {
+  chezmoi update --apply && Update-Winget
+}
+function Reconcile-Windows {
+  chezmoi update --apply && Configure-Winget && Update-Winget
 }
 function Update-Environment {
-  chezmoi update --apply && Update-Winget && Update-Ubuntu
+  Update-Windows && wsl.exe --distribution Ubuntu -- bash -lic "update-ubuntu"
 }
 New-Alias ue Update-Environment
 
 function Reconcile-Environment {
-  chezmoi update --apply && Configure-Winget && Update-Winget && Update-Ubuntu
+  Reconcile-Windows && wsl.exe --distribution Ubuntu -- bash -lic "reconcile-ubuntu"
 }
 New-Alias re Reconcile-Environment
 

@@ -2,6 +2,7 @@
 repos
 .bashrc
 .config/.bash-aliases
+.config/apt
 README.md
 {{- end -}}
 

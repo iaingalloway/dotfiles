@@ -131,12 +131,24 @@ update-apt() {
 }
 alias au='update-apt'
 
+reconcile-apt() {
+  sudo apt update && xargs -r sudo apt install -y < "$HOME/.config/apt/packages"
+}
+
+update-ubuntu() {
+  chezmoi update --apply && update-apt
+}
+
+reconcile-ubuntu() {
+  chezmoi update --apply && reconcile-apt && update-apt
+}
+
 update-environment() {
-  dfx && p Update-Winget && update-apt
+  update-ubuntu && p Update-Windows
 }
 alias ue='update-environment'
 
 reconcile-environment() {
-  dfx && p Configure-Winget && p Update-Winget && update-apt
+  reconcile-ubuntu && p Reconcile-Windows
 }
 alias re='reconcile-environment'
