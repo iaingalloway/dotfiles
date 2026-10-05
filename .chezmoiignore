@@ -1,7 +1,7 @@
 {{- if eq .chezmoi.os "windows" -}}
 repos
 .bashrc
-.config/.bash-aliases
+.config/bash.d
 .config/apt
 README.md
 {{- end -}}
@@ -12,3 +12,8 @@ Documents
 README.md
 .config/winget
 {{- end -}}
+
+{{ if or (stat "/.dockerenv") (stat "/run/.containerenv") }}
+.config/bash.d/updates.sh
+.config/bash-aliases.d/vscode.sh
+{{ end }}

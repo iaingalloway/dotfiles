@@ -1,0 +1,1 @@
+alias c='code $(git rev-parse --show-toplevel 2>/dev/null || echo .)'

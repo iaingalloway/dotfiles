@@ -38,28 +38,13 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
   debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
-
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
-fi
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-if [ -f ~/.config/.bash-aliases ]; then
-  . ~/.config/.bash-aliases
-fi
+for bash_file in ~/.config/bash.d/*.sh; do
+  [ -r "$bash_file" ] && . "$bash_file"
+done
 
 # enable programmable completion features
 if ! shopt -oq posix; then
@@ -68,29 +53,6 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
-fi
-
-# starship
-eval "$(starship init bash)"
-
-# just completion
-if (command -v just &> /dev/null); then
-  source <(just --completions bash)
-fi
-
-# kind completion
-if command -v kind &> /dev/null; then
-  source <(kind completion bash)
-fi
-
-# kubectl completion
-if command -v kubectl &> /dev/null; then
-  source <(kubectl completion bash)
-fi
-
-# direnv hook
-if command -v direnv &> /dev/null; then
-  eval "$(direnv hook bash)"
 fi
 
 # set nano as default editor
