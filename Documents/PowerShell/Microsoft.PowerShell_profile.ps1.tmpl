@@ -33,7 +33,7 @@ $p.ProgressBackgroundColor = "White"
 
 Invoke-Expression (&starship init powershell)
 
-function Invoke-WingetBootstrap {
+function Configure-Winget {
   Get-ChildItem (Join-Path $HOME '.config\winget') -Filter '*.winget' -File |
     Sort-Object Name |
     ForEach-Object {
@@ -53,12 +53,14 @@ function Update-Ubuntu {
   }
 }
 function Update-Environment {
-  chezmoi update --apply &&
-    Invoke-WingetBootstrap &&
-    Update-Winget &&
-    Update-Ubuntu
+  chezmoi update --apply && Update-Winget && Update-Ubuntu
 }
 New-Alias ue Update-Environment
+
+function Reconcile-Environment {
+  chezmoi update --apply && Configure-Winget && Update-Winget && Update-Ubuntu
+}
+New-Alias re Reconcile-Environment
 
 # chezmoi
 function Edit-Dotfiles {

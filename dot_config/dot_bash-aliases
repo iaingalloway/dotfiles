@@ -132,6 +132,11 @@ update-apt() {
 alias au='update-apt'
 
 update-environment() {
-  dfx && p Invoke-WingetBootstrap && p Update-Winget && update-apt
+  dfx && p Update-Winget && update-apt
 }
 alias ue='update-environment'
+
+reconcile-environment() {
+  dfx && p Configure-Winget && p Update-Winget && update-apt
+}
+alias re='reconcile-environment'

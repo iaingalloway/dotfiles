@@ -15,7 +15,7 @@ On Ubuntu on WSL:
 curl -sS https://starship.rs/install.sh | sh
 sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --ssh --apply iaingalloway
 
-ue
+reconcile-environment
 ```
 
 On Windows:
@@ -27,12 +27,16 @@ winget install -e --id twpayne.chezmoi
 chezmoi init --ssh --apply iaingalloway
 
 # Start a new PowerShell session, then run:
-ue
+Reconcile-Environment
 ```
 
 If WSL is installed for the first time, restart Windows when prompted, launch Ubuntu to create its Linux user, then run `ue` from PowerShell or WSL.
 
 Docker Desktop must be launched once after installation. Enable **Use the WSL 2 based engine** and Ubuntu under **Settings > Resources > WSL Integration**.
+
+## Apply updates
+
+Aliases are provided in both Bash and PowerShell to reconcile (`re`) and update (`ue`) the environment.
 
 ## Cheat sheet
 
